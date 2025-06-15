@@ -6,6 +6,6 @@ common = "--publish-quiet --strict --tags 'not @wip'"
 %>
 default: <%= common %> --format summary features
 loud: <%= common %> LOUD=true --fail-fast --format pretty features
-rerun: <%= common %> <%= rerun_opts %> --format rerun --out rerun.txt'
+rerun: <%= common %> <%= rerun_opts %> --format rerun --out rerun.txt
 steps: <%= common %> --dry-run --format stepdefs
 wip: --publish-quiet --strict --tags '@wip'
