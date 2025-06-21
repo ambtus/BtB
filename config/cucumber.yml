@@ -1,11 +1,12 @@
 <%
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
 rerun = rerun.strip.gsub /\s/, ' '
-rerun_opts = rerun.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
-common = "--publish-quiet --strict --tags 'not @wip'"
+rerun_opts = rerun.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} LOUD=true #{rerun}"
+common = "--publish-quiet --strict"
 %>
-default: <%= common %> --format summary features
-loud: <%= common %> LOUD=true --fail-fast --format pretty features
-rerun: <%= common %> <%= rerun_opts %> --format rerun --out rerun.txt
+default: <%= common %> --fail-fast --format progress features
+d: <%= common %> --fail-fast --format summary features
+l: LOUD=true <%= common %> --fail-fast --format pretty features
+r: <%= common %> <%= rerun_opts %> --order random --format rerun --out rerun.txt
+p: <%= common %> --fail-fast --format pretty 
 steps: <%= common %> --dry-run --format stepdefs
-wip: --publish-quiet --strict --tags '@wip'

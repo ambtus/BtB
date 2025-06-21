@@ -24,4 +24,6 @@
 /config/master.key
 
 # Ignore rspec rerun file
-/spec/status.txt
+/spec/rerun.txt
+# Ignore cucumber rerun file
+rerun.txt
