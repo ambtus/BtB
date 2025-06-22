@@ -66,4 +66,5 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.hosts << "imac.local:3000"
+  config.hosts << "crunch.local:3000"
 end
