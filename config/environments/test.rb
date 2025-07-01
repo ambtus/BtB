@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/core_ext/integer/time'
 
 # The test environment is used exclusively to run your application's
@@ -58,7 +60,7 @@ Rails.application.configure do
 
   # Log to STDOUT if asked
   if ENV['LOUD'].present?
-    config.logger = ActiveSupport::Logger.new(STDOUT)
+    config.logger = ActiveSupport::Logger.new($stdout)
                                          .tap  { |logger| logger.formatter = Logger::Formatter.new }
                                          .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
   end
