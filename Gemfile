@@ -1,15 +1,15 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rails"
-gem "mysql2"
-gem "puma"
-gem "haml"
+gem 'haml'
+gem 'mysql2'
+gem 'puma'
+gem 'rails'
 
 group :development, :test do
-  gem "rspec-rails"
-  gem "cucumber-rails", require: false
-  gem "database_cleaner"
-  gem "launchy" # So you can do save_and_open_page
-  gem "haml-rails"
-  gem "error_highlight"
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'error_highlight'
+  gem 'haml-rails'
+  gem 'launchy' # So you can do save_and_open_page
+  gem 'rspec-rails'
 end
