@@ -28,7 +28,7 @@ RSpec.configure do |config|
     config.default_formatter = "doc"
   end
 
-  # maybe someday
+# maybe someday
 =begin
   # This allows you to limit a spec run to individual examples or groups
   # by tagging them with `:focus` metadata.
@@ -53,5 +53,4 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-  
 end

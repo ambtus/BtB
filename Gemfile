@@ -9,8 +9,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "cucumber-rails", require: false
   gem "database_cleaner"
-  gem "launchy"    # So you can do Then show me the page
+  gem "launchy" # So you can do save_and_open_page
   gem "haml-rails"
   gem "error_highlight"
 end
-
