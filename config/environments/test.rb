@@ -49,7 +49,7 @@ Rails.application.configure do
   # Log to STDOUT if asked
   if ENV['LOUD'].present?
     config.logger = ActiveSupport::Logger.new($stdout)
-                                         .tap  { |logger| logger.formatter = Logger::Formatter.new }
-                                         .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
+                                         .tap  { |l| l.formatter = Logger::Formatter.new }
+                                         .then { |l| ActiveSupport::TaggedLogging.new(l) }
   end
 end

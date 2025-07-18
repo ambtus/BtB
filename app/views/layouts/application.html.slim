@@ -2,7 +2,7 @@ doctype html
 html lang="en"
   head
     -raise 'no @title set' unless @title
-    title="#{Rails.application.class.module_parent_name}: #@title"
+    title="#{Rails.application.class.module_parent_name}: #{@title}"
     meta content="width=device-width,initial-scale=1" name="viewport"
     meta content="yes" name="apple-mobile-web-app-capable"
     = csrf_meta_tags
