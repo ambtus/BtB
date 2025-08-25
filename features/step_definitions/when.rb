@@ -18,7 +18,7 @@ When('I go to the {word} {word} page') do |action, model|
 end
 
 # e.g. the edit checking asset page
-When('I go to the {word} {word} {word} page') do |action, name, model|
+When('I go to the {word} {word} {word} page') do |action, name, _model|
   visit '/'
   click_link name.capitalize
   click_link action.capitalize

@@ -16,5 +16,4 @@ class Recipient < ApplicationRecord
 
   def method = type.downcase.pluralize.to_sym
   def targets = send(method)
-
 end

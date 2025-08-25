@@ -20,5 +20,5 @@ p.center Edit Disharge for #{@debt.name}
     =f.text_field :memo
   .debt
     b> Debt:
-    = f.collection_select :debt_id, Debt.all.sort, :id, :name, {selected: @debt.id}
+    = f.collection_select :debt_id, Debt.all.sort, :id, :name, { selected: @debt.id }
   =f.submit

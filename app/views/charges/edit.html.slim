@@ -19,5 +19,5 @@ p.center Edit Charge for #{@debt.name}
     b> Memo:
     =f.text_field :memo
     b> Debt:
-    = f.collection_select :debt_id, Debt.all.sort, :id, :name, {selected: @debt.id}
+    = f.collection_select :debt_id, Debt.all.sort, :id, :name, { selected: @debt.id }
   =f.submit

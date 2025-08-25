@@ -11,7 +11,7 @@ hr
 
 ul.incomes.right
   =render 'incomes/lis', incomes: @asset.incomes
-.right=link_to "New Income", new_asset_income_path(@asset)
+.right=link_to 'New Income', new_asset_income_path(@asset)
 
 ul.outgoes
   =render 'outgoes/lis', outgoes: @asset.outgoes

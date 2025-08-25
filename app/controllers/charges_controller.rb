@@ -44,7 +44,6 @@ class ChargesController < ApplicationController
 
   def set_charge = (@charge = Charge.find(params[:id]))
 
-
   def set_debt
     @debt =
       if params[:debt_id]

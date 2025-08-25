@@ -55,7 +55,7 @@ class OutgoesController < ApplicationController
 
   # You can use the same list for both create and update.
   def outgo_params
-     params.expect(outgo: %i[date asset_id recipient_id memo])
-            .merge(amount: amount)
+    params.expect(outgo: %i[date asset_id recipient_id memo])
+          .merge(amount: amount)
   end
 end

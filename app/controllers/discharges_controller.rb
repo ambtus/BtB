@@ -44,7 +44,6 @@ class DischargesController < ApplicationController
 
   def set_discharge = (@discharge = Discharge.find(params[:id]))
 
-
   def set_debt
     @debt =
       if params[:debt_id]
@@ -56,7 +55,7 @@ class DischargesController < ApplicationController
 
   # You can use the same list for both create and update.
   def discharge_params
-     params.expect(discharge: %i[date debt_id recipient_id memo])
-     .merge(amount: amount)
+    params.expect(discharge: %i[date debt_id recipient_id memo])
+          .merge(amount: amount)
   end
 end

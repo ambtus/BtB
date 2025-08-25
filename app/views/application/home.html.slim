@@ -14,11 +14,11 @@
         |<>
         =link_to a.name, a
         |<>
-        =link_to "Income", new_asset_income_path(a)
+        =link_to 'Income', new_asset_income_path(a)
         |<>
-        =link_to "Outgo", new_asset_outgo_path(a)
+        =link_to 'Outgo', new_asset_outgo_path(a)
         |<>
-        =link_to "Reconcile", reconcile_asset_path(a)
+        =link_to 'Reconcile', reconcile_asset_path(a)
   =link_to 'New Asset', new_asset_path
   |<>
   =link_to 'Transfer Between', transfer_path
@@ -34,7 +34,7 @@
         |<>
         =link_to b.name, b
         |<>
-        =link_to "Charge", new_debt_charge_path(b)
+        =link_to 'Charge', new_debt_charge_path(b)
         |<>
         =link_to 'Discharge', new_debt_discharge_path(b)
         |<>
