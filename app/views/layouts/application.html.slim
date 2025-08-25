@@ -4,14 +4,24 @@ html lang="en"
     -raise 'no @title set' unless @title
     title="#{Rails.application.class.module_parent_name}: #{@title}"
     meta content="width=device-width,initial-scale=1" name="viewport"
-    meta content="yes" name="apple-mobile-web-app-capable"
-    = csrf_meta_tags
-    = csp_meta_tag
     = yield :head
     css:
       .center  { text-align: center;}
+      .right { text-align: right;}
       #error  { color: red }
+      #alert {color: orange }
       #notice { color: green }
-      ul.none { list-style: none }
+      ul { list-style: none; padding: 0; }
+      .big_button { width: 15em; height: 10em;}
+      td.bordered {border: 1px solid grey}
+      table {margin: auto}
+
   body
+    div.center=link_to_unless_current 'Home', home_path
+
+    -if notice
+      p.center#notice= notice
+    -if alert
+      p.center#alert= alert
+
     = yield

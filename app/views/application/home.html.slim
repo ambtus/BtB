@@ -1,0 +1,61 @@
+.center
+  b> Net:
+  span.net= display(Asset.net - Debt.net)
+
+  hr
+
+  b> Assets:
+  span.asset= display Asset.net
+
+  ul.assets.center
+    -Asset.find_each do |a|
+      li
+        span class=a.name.downcase
+          =display(a.net)
+        |<>
+        =link_to a.name, a
+        |<>
+        =link_to "Income", new_asset_income_path(a)
+        |<>
+        =link_to "Outgo", new_asset_outgo_path(a)
+        |<>
+        =link_to "Reconcile", reconcile_asset_path(a)
+  =link_to 'New Asset', new_asset_path
+  |<>
+  =link_to 'Transfer', transfer_path
+  hr
+
+  b> Debts:
+  span.debt= display Debt.net
+
+  ul.debts.center
+    -Debt.find_each do |b|
+      li class=b.name
+        =display(b.net)
+        |<>
+        =link_to b.name, b
+        |<>
+        =link_to "Charge", new_debt_charge_path(b)
+        |<>
+        =link_to 'Discharge', new_debt_discharge_path(b)
+        |<>
+        =link_to 'Reconcile', reconcile_debt_path(b)
+  =link_to 'New Debt', new_debt_path
+  |<>
+  =link_to 'Payment', payment_path
+  hr
+table
+  tr
+    -[Income, Outgo, Charge, Discharge].each do |type|
+      th=type.name.pluralize
+  tr
+    -[Income, Outgo, Charge, Discharge].each do |type|
+      td
+        ul
+          -type.recipients.sort.each do |r|
+            li=link_to r.name, recipient_path(r)
+  tr
+    -[Income, Outgo, Charge, Discharge].each do |type|
+      td=link_to "New #{type} Recipient", new_recipient_path(type)
+
+

@@ -1,0 +1,30 @@
+# frozen_string_literal: true
+
+# observable output
+
+Then('the {word} amount should be {word}') do |word, size|
+  string = currency_string(size)
+  element = find(".#{word}")
+  expect(element).to have_text(string, exact: true)
+end
+
+Then('the link to {} should be {word}') do |word, word2|
+  case word2
+  when 'disabled'
+    assert page.has_no_selector?('a', text: /^#{word}$/)
+  when 'enabled'
+    expect(page).to have_link(word)
+  end
+end
+
+Then('the title should be {string}') do |string|
+  expect(page).to have_title(string)
+end
+
+Then('I should see {string}') do |string|
+  expect(page).to have_text(string)
+end
+
+Then('I should NOT see {string}') do |string|
+  expect(page).to have_no_text(string)
+end
