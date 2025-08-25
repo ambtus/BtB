@@ -13,11 +13,21 @@ class IncomesController < ApplicationController
   def create
     @income = @asset.incomes.build(income_params)
     if @income.save
-      redirect_to @income, notice: 'Success!'
+      redirect_to asset_path(@asset), notice: 'Success!'
     else
       flash.now[:alert] = 'Failure!'
       render 'new'
     end
+  end
+
+  def reconcile
+    @income.update!(reconciled: true)
+    redirect_to asset_path(@asset)
+  end
+
+  def unreconcile
+    @income.update!(reconciled: false)
+    redirect_to asset_path(@asset)
   end
 
   def update

@@ -13,4 +13,9 @@
     =link_to 'Edit', edit_income_path(x)
     |<>
     =link_to 'Delete', delete_income_path(x)
+    |<>
+    -if x.reconciled?
+      =button_to 'Unreconcile', unreconcile_income_path(x)
+    -else
+      =button_to 'Reconcile', reconcile_income_path(x)
 

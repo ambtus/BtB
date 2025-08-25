@@ -35,6 +35,8 @@ class AssetsController < ApplicationController
     end
   end
 
+  def reconcile = (@title = "Reconcile #{@asset.name} Asset")
+
   def update
     if @asset.update(asset_params)
       redirect_to home_path, notice: 'Success!'

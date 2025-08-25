@@ -96,3 +96,43 @@ Example: Payment title
   When I go to the payment page
   Then the title should be 'IDNAB: New Payment'
 
+Example: Reconciled amount
+  Given I have a Visa debt
+    And it has a small charge
+  When I go to the Visa page
+  Then the reconciled amount should be zero
+
+Example: Unreconciled amount
+  Given I have a Visa debt
+    And it has a small charge
+  When I go to the Visa page
+  Then the unreconciled amount should be small
+
+Example: reconcile charge
+  Given I have a Visa debt
+    And it has a small charge
+  When I go to the Visa page
+    And I press Reconcile
+  Then the reconciled amount should be small
+
+Example: reconcile discharge
+  Given I have a Visa debt
+    And it has a small discharge
+  When I go to the Visa page
+    And I press Reconcile
+  Then the unreconciled amount should be zero
+
+Example: unreconcile charge
+  Given I have a Visa debt
+    And it has a small charge
+  When I go to the Visa page
+    And I press Reconcile
+    And I press Unreconcile
+  Then the reconciled amount should be zero
+
+Example: unreconcile discharge
+  Given I have a Visa debt
+    And it has a small reconciled discharge
+  When I go to the Visa page
+    And I press Unreconcile
+  Then the reconciled amount should be zero

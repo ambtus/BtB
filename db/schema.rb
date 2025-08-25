@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_08_120730) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_25_210148) do
   create_table "assets", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", limit: 63, null: false
     t.string "memo", limit: 63
@@ -27,6 +27,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_120730) do
     t.datetime "updated_at", null: false
     t.bigint "debt_id", null: false
     t.bigint "recipient_id"
+    t.boolean "reconciled", default: false, null: false
     t.index ["debt_id"], name: "index_charges_on_debt_id"
     t.index ["recipient_id"], name: "index_charges_on_recipient_id"
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_120730) do
     t.datetime "updated_at", null: false
     t.bigint "debt_id", null: false
     t.bigint "recipient_id"
+    t.boolean "reconciled", default: false, null: false
     t.index ["debt_id"], name: "index_discharges_on_debt_id"
     t.index ["recipient_id"], name: "index_discharges_on_recipient_id"
   end
@@ -59,6 +61,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_120730) do
     t.datetime "updated_at", null: false
     t.bigint "asset_id", null: false
     t.bigint "recipient_id"
+    t.boolean "reconciled", default: false, null: false
     t.index ["asset_id"], name: "index_incomes_on_asset_id"
     t.index ["recipient_id"], name: "index_incomes_on_recipient_id"
   end
@@ -71,6 +74,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_120730) do
     t.datetime "updated_at", null: false
     t.bigint "asset_id", null: false
     t.bigint "recipient_id"
+    t.boolean "reconciled", default: false, null: false
     t.index ["asset_id"], name: "index_outgoes_on_asset_id"
     t.index ["recipient_id"], name: "index_outgoes_on_recipient_id"
   end

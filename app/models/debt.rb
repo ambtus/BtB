@@ -9,6 +9,16 @@ class Debt < ApplicationRecord
   def self.net = all.sum(&:net)
   def net = charges.sum(&:amount) - discharges.sum(&:amount)
 
+  def reconciled_charges = charges.where(reconciled: true)
+  def reconciled_discharges = discharges.where(reconciled: true)
+
+  def reconciled = reconciled_charges.sum(&:amount) - reconciled_discharges.sum(&:amount)
+
+  def unreconciled_charges = charges.where(reconciled: false)
+  def unreconciled_discharges = discharges.where(reconciled: false)
+
+  def unreconciled = unreconciled_charges.sum(&:amount) - unreconciled_discharges.sum(&:amount)
+
   def self.payment(amount, sender, receiver)
     return false if sender == receiver
 

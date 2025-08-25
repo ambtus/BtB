@@ -95,3 +95,46 @@ Example: asset memo on asset page
 Example: Transfer title
   When I go to the transfer page
   Then the title should be 'IDNAB: New Transfer'
+
+Example: Reconciled amount
+  Given I have a checking asset
+    And it has a small income
+  When I go to the checking page
+  Then the reconciled amount should be zero
+
+Example: Unreconciled amount
+  Given I have a checking asset
+    And it has a small income
+  When I go to the checking page
+  Then the unreconciled amount should be small
+
+Example: reconcile income
+  Given I have a checking asset
+    And it has a small income
+  When I go to the checking page
+    And I press Reconcile
+  Then the reconciled amount should be small
+
+Example: reconcile outgo
+  Given I have a checking asset
+    And it has a small reconciled income
+    And it has a small outgo
+  When I go to the checking page
+    And I press Reconcile
+  Then the unreconciled amount should be zero
+
+Example: unreconcile income
+  Given I have a checking asset
+    And it has a small income
+  When I go to the checking page
+    And I press Reconcile
+    And I press Unreconcile
+  Then the reconciled amount should be zero
+
+Example: unreconcile outgo
+  Given I have a checking asset
+    And it has a small income
+    And it has a small reconciled outgo
+  When I go to the checking page
+    And I press Unreconcile
+  Then the reconciled amount should be zero

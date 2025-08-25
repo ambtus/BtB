@@ -30,7 +30,7 @@ Example: list children
   When I go to the Visa page
   Then I should see 1 charge
     And I should see 2 discharges
-    And the amount amount should be small
+    And the unreconciled amount should be small
 
 Example: payments page shows nets
   Given it has a compound charge

@@ -30,7 +30,7 @@ Example: list children
   When I go to the checking page
   Then I should see 1 income
     And I should see 2 outgoes
-    And the amount amount should be small
+    And the unreconciled amount should be small
 
 Example: transfer page shows nets
   Given it has a small income

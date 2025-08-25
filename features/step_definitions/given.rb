@@ -14,6 +14,13 @@ Given('it has a {word} {word}') do |amt, child|
   instance.send(child.pluralize).create!(amount: currency(amt))
 end
 
+Given('it has a {word} reconciled {word}') do |amt, child|
+  instance = Debt.last || Asset.last
+  raise unless %w[income outgo charge discharge].include? child
+
+  instance.send(child.pluralize).create!(amount: currency(amt), reconciled: true)
+end
+
 Given('the {word} has the {word} {word}') do |model, field, memo|
   model.capitalize.constantize.last.update!(field => memo)
 end

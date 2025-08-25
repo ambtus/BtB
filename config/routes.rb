@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     get "#{thing}/:id/delete", to: "#{thing}#delete", as: "delete_#{thing.singularize}"
   end
 
-  %w[assets debts].each do |thing|
-    get "#{thing}/:id/reconcile", to: "#{thing}#reconcile", as: "reconcile_#{thing.singularize}"
+  %w[incomes outgoes charges discharges].each do |thing|
+    post "#{thing}/:id/reconcile", to: "#{thing}#reconcile", as: "reconcile_#{thing.singularize}"
+    post "#{thing}/:id/unreconcile", to: "#{thing}#unreconcile", as: "unreconcile_#{thing.singularize}"
   end
 
   get 'transfer', to: 'assets#transfer', as: :transfer

@@ -29,6 +29,16 @@ class DischargesController < ApplicationController
     end
   end
 
+  def reconcile
+    @discharge.update!(reconciled: true)
+    redirect_to @debt
+  end
+
+  def unreconcile
+    @discharge.update!(reconciled: false)
+    redirect_to @debt
+  end
+
   def delete = (@title = "Delete #{@discharge.debt.name} Discharge")
 
   def destroy

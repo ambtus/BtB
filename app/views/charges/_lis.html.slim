@@ -13,4 +13,8 @@
     =link_to 'Edit', edit_charge_path(x)
     |<>
     =link_to 'Delete', delete_charge_path(x)
-
+    |<>
+    -if x.reconciled?
+      =button_to 'Unreconcile', unreconcile_charge_path(x)
+    -else
+      =button_to 'Reconcile', reconcile_charge_path(x)

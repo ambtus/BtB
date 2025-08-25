@@ -1,19 +1,33 @@
-.center #{@debt.memo} #{@debt.name}
+.center #{@debt.name} #{@debt.memo}
 .center
   =link_to 'Edit', edit_debt_path(@debt)
   |<> |
   =link_to 'Delete', delete_debt_path(@debt)
 hr
 .center
-  b> Amount:
-  span.amount= display @debt.net
+  b> Unreconciled:
+  span.unreconciled= display @debt.unreconciled
+
+
 
 ul.charges.right
-  =render 'charges/lis', charges: @debt.charges
-.right=link_to 'Charge', new_debt_charge_path(@debt)
+  =render 'charges/lis', charges: @debt.unreconciled_charges
+.right=link_to 'New Charge', new_debt_discharge_path(@debt)
 
 ul.discharges
-  =render 'discharges/lis', discharges: @debt.discharges
-=link_to 'Discharge', new_debt_discharge_path(@debt)
+  =render 'discharges/lis', discharges: @debt.unreconciled_discharges
+=link_to 'New Discharge', new_debt_discharge_path(@debt)
+
+
+hr
+.center
+  b> Reconciled:
+  span.reconciled= display @debt.reconciled
+
+ul.charges.right
+  =render 'charges/lis', charges: @debt.reconciled_charges
+
+ul.discharges
+  =render 'discharges/lis', discharges: @debt.reconciled_discharges
 
 

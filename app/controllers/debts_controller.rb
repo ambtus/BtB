@@ -35,6 +35,8 @@ class DebtsController < ApplicationController
     end
   end
 
+  def reconcile = (@title = "Reconcile #{@debt.name} Debt")
+
   def update
     if @debt.update(debt_params)
       redirect_to home_path, notice: 'Success!'

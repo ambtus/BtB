@@ -29,6 +29,16 @@ class ChargesController < ApplicationController
     end
   end
 
+  def reconcile
+    @charge.update!(reconciled: true)
+    redirect_to @debt
+  end
+
+  def unreconcile
+    @charge.update!(reconciled: false)
+    redirect_to @debt
+  end
+
   def delete = (@title = "Delete #{@charge.debt.name} Charge")
 
   def destroy

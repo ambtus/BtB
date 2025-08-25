@@ -1,20 +1,33 @@
-.center #{@asset.memo} #{@asset.name}
+.center #{@asset.name} #{@asset.memo}
 .center
   =link_to 'Edit', edit_asset_path(@asset)
   |<> |
   =link_to 'Delete', delete_asset_path(@asset)
 hr
-
 .center
-  b> Net:
-  span.amount= display @asset.net
+  b> Unreconciled:
+  span.unreconciled= display @asset.unreconciled
+
+
 
 ul.incomes.right
-  =render 'incomes/lis', incomes: @asset.incomes
+  =render 'incomes/lis', incomes: @asset.unreconciled_incomes
 .right=link_to 'New Income', new_asset_income_path(@asset)
 
 ul.outgoes
-  =render 'outgoes/lis', outgoes: @asset.outgoes
+  =render 'outgoes/lis', outgoes: @asset.unreconciled_outgoes
 =link_to 'New Outgo', new_asset_outgo_path(@asset)
+
+
+hr
+.center
+  b> Reconciled:
+  span.reconciled= display @asset.reconciled
+
+ul.incomes.right
+  =render 'incomes/lis', incomes: @asset.reconciled_incomes
+
+ul.outgoes
+  =render 'outgoes/lis', outgoes: @asset.reconciled_outgoes
 
 
