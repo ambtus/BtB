@@ -1,0 +1,22 @@
+ul.debts.center
+  -Debt.find_each do |d|
+    li
+      =d.name
+      |> :
+      span class=d.name.downcase
+        =display(d.net)
+
+=form_with url: post_payment_path do |f|
+  .amount
+    b> Amount:
+    =money_picker @payment
+  .date
+    b> Date:
+    =f.date_field :date
+  .sender
+    b> Sending Debt:
+    = f.select(:sender_id, Debt.all.collect { |a| [a.name, a.id] })
+  .sender
+    b> Receiving Debt:
+    = f.select(:receiver_id, Debt.all.collect { |a| [a.name, a.id] })
+  =f.submit

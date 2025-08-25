@@ -2,13 +2,14 @@
 
 class RecipientsController < ApplicationController
   before_action :set_recipient, except: %i[index new create]
+  before_action :set_type
+
   def index = (@recipients = Recipient.all)
 
-  def show = (@title = "#{@recipient.name} #{@recipient.type}")
+  def show = (@title = "#{@recipient.name} Recipient")
 
   def new
     @recipient = Recipient.new
-    @type = params[:format]
   end
 
   def edit = (@title = "Edit #{@recipient.name} Recipient")
@@ -25,7 +26,7 @@ class RecipientsController < ApplicationController
 
   def update
     if @recipient.update(recipient_params)
-      redirect_to recipients_path, notice: 'Success!'
+      redirect_to home_path, notice: 'Success!'
     else
       flash.now[:alert] = 'Failure!'
       render 'edit'
@@ -41,12 +42,21 @@ class RecipientsController < ApplicationController
 
   def destroy
     @recipient.destroy!
-    redirect_to recipients_path, alert: "#{@recipient.name} was destroyed!"
+    redirect_to home_path, alert: "#{@recipient.name} was destroyed!"
   end
 
   private
 
   def set_recipient = (@recipient = Recipient.find(params[:id]))
+
+  def set_type
+    @type =
+      if params[:format]
+        params[:format]
+      elsif @recipient
+        @recipient.type
+      end
+  end
 
   # You can use the same list for both create and update.
   def recipient_params = params.expect(recipient: %i[name type])

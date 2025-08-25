@@ -1,0 +1,22 @@
+p.center New Income for #{@asset.name} Asset
+
+-if @income.errors.any?
+  #error
+    ul
+      -@income.errors.each do |e|
+        li = e.full_message
+
+.center=form_with model: [@asset, @income] do |f|
+  .amount
+    b> Amount:
+    =money_picker @income
+  .date
+    b> Date:
+    =f.date_field :date
+  .recipient
+    b> Recipient:
+    = f.collection_select :recipient_id, Income.recipients, :id, :name, { include_blank: true }
+  .memo
+    b> Memo:
+    =f.text_field :memo
+  =f.submit

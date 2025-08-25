@@ -1,0 +1,19 @@
+.center #{@debt.memo} #{@debt.name}
+.center
+  =link_to 'Edit', edit_debt_path(@debt)
+  |<> |
+  =link_to 'Delete', delete_debt_path(@debt)
+hr
+.center
+  b> Amount:
+  span.amount= display @debt.net
+
+ul.charges.right
+  =render 'charges/lis', charges: @debt.charges
+.right=link_to 'Charge', new_debt_charge_path(@debt)
+
+ul.discharges
+  =render 'discharges/lis', discharges: @debt.discharges
+=link_to 'Discharge', new_debt_discharge_path(@debt)
+
+

@@ -1,0 +1,21 @@
+p.center New Discharge for #{@debt.name}
+
+-if @discharge.errors.any?
+  #error
+    ul
+      -@discharge.errors.each do |e|
+        li = e.full_message
+=form_with model: [@debt, @discharge] do |f|
+  .amount
+    b> Amount:
+    =money_picker @discharge
+  .date
+    b> Date:
+    =f.date_field :date
+  .recipient
+    b> Recipient:
+    = f.collection_select :recipient_id, Discharge.recipients, :id, :name, { include_blank: true }
+  .memo
+    b> Memo:
+    =f.text_field :memo
+  =f.submit

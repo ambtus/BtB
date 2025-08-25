@@ -5,14 +5,9 @@ class ApplicationController < ActionController::Base
 
   def home = (@title = 'Home')
 
-  before_action :title
-  def title
-    @title =
-      if action_name == 'index'
-        controller_name.capitalize
-      else
-        "#{action_name.capitalize} #{controller_name.singularize.capitalize}"
-      end
+  before_action :set_title
+  def set_title
+    @title = "#{action_name.capitalize} #{controller_name.singularize.capitalize}"
   end
 
   def amount = amount_from_hash(amount_params)

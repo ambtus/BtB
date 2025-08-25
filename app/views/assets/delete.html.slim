@@ -1,0 +1,6 @@
+p
+  Are you sure you want to delete the #{@asset.name} asset? This action will also delete all its incomes (#{@asset.incomes.count}) and outgoes (#{@asset.outgoes.count}).
+
+= form_with model: @asset do |f|
+  =f.button 'Destroy', formmethod: :delete, class: :big_button
+  =f.submit 'Keep', class: :big_button

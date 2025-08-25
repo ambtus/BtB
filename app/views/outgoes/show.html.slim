@@ -1,0 +1,13 @@
+=display @outgo.amount
+|<> on
+=@outgo.date
+|<> from
+=@outgo.asset.name
+|<> to
+=@outgo.recipient.try(&:name)
+|<>
+=@outgo.memo
+|<>
+=link_to 'Edit', edit_outgo_path(@outgo)
+|<>
+=link_to 'Delete', delete_outgo_path(@outgo)

@@ -1,0 +1,20 @@
+.center #{@asset.memo} #{@asset.name}
+.center
+  =link_to 'Edit', edit_asset_path(@asset)
+  |<> |
+  =link_to 'Delete', delete_asset_path(@asset)
+hr
+
+.center
+  b> Net:
+  span.amount= display @asset.net
+
+ul.incomes.right
+  =render 'incomes/lis', incomes: @asset.incomes
+.right=link_to "New Income", new_asset_income_path(@asset)
+
+ul.outgoes
+  =render 'outgoes/lis', outgoes: @asset.outgoes
+=link_to 'New Outgo', new_asset_outgo_path(@asset)
+
+

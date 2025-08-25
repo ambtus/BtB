@@ -8,10 +8,9 @@
   span.asset= display Asset.net
 
   ul.assets.center
-    -Asset.find_each do |a|
+    -Asset.all.sort.each do |a|
       li
-        span class=a.name.downcase
-          =display(a.net)
+        span class=a.name.downcase =display(a.net)
         |<>
         =link_to a.name, a
         |<>
@@ -22,16 +21,16 @@
         =link_to "Reconcile", reconcile_asset_path(a)
   =link_to 'New Asset', new_asset_path
   |<>
-  =link_to 'Transfer', transfer_path
+  =link_to 'Transfer Between', transfer_path
   hr
 
   b> Debts:
   span.debt= display Debt.net
 
   ul.debts.center
-    -Debt.find_each do |b|
-      li class=b.name
-        =display(b.net)
+    -Debt.all.sort.each do |b|
+      li
+        span class=b.name.downcase =display(b.net)
         |<>
         =link_to b.name, b
         |<>
@@ -42,7 +41,7 @@
         =link_to 'Reconcile', reconcile_debt_path(b)
   =link_to 'New Debt', new_debt_path
   |<>
-  =link_to 'Payment', payment_path
+  =link_to 'Payment Between', payment_path
   hr
 table
   tr

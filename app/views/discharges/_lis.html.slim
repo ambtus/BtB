@@ -1,0 +1,18 @@
+-discharges.sort_by(&:date).reverse_each do |x|
+  li
+    =display x.amount
+    |<> on
+    =x.date
+    |<> from
+    =x.debt.name
+    -if x.recipient
+      |<> to
+      =x.recipient.name
+    |<>
+    =x.memo
+    |<>
+    =link_to 'Edit', edit_discharge_path(x)
+    |<>
+    =link_to 'Delete', delete_discharge_path(x)
+    |<>
+    =link_to 'Debts', discharge_path(x)

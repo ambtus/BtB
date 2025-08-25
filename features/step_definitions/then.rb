@@ -4,7 +4,7 @@
 
 Then('the {word} amount should be {word}') do |word, size|
   string = currency_string(size)
-  element = find(".#{word}")
+  element = find(".#{word.downcase}")
   expect(element).to have_text(string, exact: true)
 end
 
@@ -19,6 +19,16 @@ end
 
 Then('the title should be {string}') do |string|
   expect(page).to have_title(string)
+end
+
+Then('I should see {int} {word}(s)') do |int, word|
+  expect(find("ul.#{word.pluralize}")).to have_css('li', count: int)
+end
+
+Then('I should see a(n) {word}') do |word|
+  raise "#{word} is not what I was expecting" unless %w[notice alert error].include?(word)
+
+  expect(page).to have_css("##{word}")
 end
 
 Then('I should see {string}') do |string|

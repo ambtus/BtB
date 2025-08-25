@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'application#home', as: :home
 
-  %i[asset debt income outgo charge discharge recipient].each do |thing|
-    get "#{thing}s/:id/delete", to: "#{thing}s#delete", as: "delete_#{thing}"
+  %w[assets debts incomes outgoes charges discharges recipients].each do |thing|
+    get "#{thing}/:id/delete", to: "#{thing}#delete", as: "delete_#{thing.singularize}"
   end
 
-  %i[asset debt].each do |thing|
-    get "#{thing}s/:id/reconcile", to: "#{thing}s#reconcile", as: "reconcile_#{thing}"
+  %w[assets debts].each do |thing|
+    get "#{thing}/:id/reconcile", to: "#{thing}#reconcile", as: "reconcile_#{thing.singularize}"
   end
 
   get 'transfer', to: 'assets#transfer', as: :transfer

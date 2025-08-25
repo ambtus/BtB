@@ -1,0 +1,13 @@
+-if @debt.errors.any?
+  #error
+    ul
+      -@debt.errors.each do |e|
+        li = e.full_message
+=form_with model: @debt do |f|
+  .name
+    b> Name:
+    =f.text_field :name
+  .memo
+    b> Memo:
+    =f.text_field :memo
+  =f.submit

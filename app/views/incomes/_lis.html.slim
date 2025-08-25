@@ -1,0 +1,16 @@
+-incomes.sort_by(&:date).reverse_each do |x|
+  li
+    =display x.amount
+    |<> on
+    =x.date
+    |<> to
+    =x.asset.name
+    |<> from
+    =x.recipient.try(&:name)
+    |<>
+    =x.memo
+    |<>
+    =link_to 'Edit', edit_income_path(x)
+    |<>
+    =link_to 'Delete', delete_income_path(x)
+

@@ -3,6 +3,7 @@
 class ChargesController < ApplicationController
   before_action :set_charge, except: %i[index new create]
   before_action :set_debt
+
   def index = (@charges = Charge.all)
 
   def new = (@charge = Charge.new(debt: @debt))
@@ -10,7 +11,7 @@ class ChargesController < ApplicationController
   def edit = (@title = "Edit #{@charge.debt.name} Charge")
 
   def create
-    @charge = Charge.new(charge_params)
+    @charge = @debt.charges.build(charge_params)
     if @charge.save
       redirect_to @charge, notice: 'Success!'
     else
@@ -48,13 +49,14 @@ class ChargesController < ApplicationController
     @debt =
       if params[:debt_id]
         Debt.find(params[:debt_id])
-      elsif @charge
-        @charge.debt
       else
-        Debt.new
+        @charge.debt
       end
   end
 
   # You can use the same list for both create and update.
-  def charge_params = params.expect(charge: %i[date debt_id recipient_id memo]).merge(amount: amount)
+  def charge_params
+    params.expect(charge: %i[date debt_id recipient_id memo])
+          .merge(amount: amount)
+  end
 end

@@ -1,0 +1,13 @@
+=display @discharge.amount
+|<> on
+=@discharge.date
+|<> from
+=@discharge.debt.name
+|<> to
+=@discharge.recipient.try(&:name)
+|<>
+=@discharge.memo
+|<>
+=link_to 'Edit', edit_discharge_path(@discharge)
+|<>
+=link_to 'Delete', delete_discharge_path(@discharge)

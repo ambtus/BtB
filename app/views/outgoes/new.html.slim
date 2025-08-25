@@ -1,0 +1,22 @@
+p.center New Outgo for #{@asset.name} Asset
+p.center.net=display(@asset.net)
+
+-if @outgo.errors.any?
+  #error
+    ul
+      -@outgo.errors.each do |e|
+        li = e.full_message
+=form_with model: [@asset, @outgo] do |f|
+  .amount
+    b> Amount:
+    =money_picker @outgo
+  .date
+    b> Date:
+    =f.date_field :date
+  .recipient
+    b> Recipient:
+    = f.collection_select :recipient_id, Outgo.recipients, :id, :name, { include_blank: true }
+  .memo
+    b> Memo:
+    =f.text_field :memo
+  =f.submit

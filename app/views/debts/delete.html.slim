@@ -1,0 +1,6 @@
+p
+  Are you sure you want to delete the #{@debt.name} debt? This action will also delete all its charges (#{@debt.charges.count}) and discharges (#{@debt.discharges.count}).
+
+= form_with model: @debt do |f|
+  =f.button 'Destroy', formmethod: :delete, class: :big_button
+  =f.submit 'Keep', class: :big_button

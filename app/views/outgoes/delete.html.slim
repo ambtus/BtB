@@ -1,0 +1,6 @@
+p
+  Are you sure you want to delete this #{@outgo.asset.name} income? This action will increase the #{display Asset.net} net.
+
+= form_with model: @outgo do |f|
+  =f.button 'Destroy', formmethod: :delete, class: :big_button
+  =f.submit 'Keep', class: :big_button

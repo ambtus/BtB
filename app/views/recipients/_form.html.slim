@@ -1,0 +1,15 @@
+-if @recipient.errors.any?
+  #error
+    ul
+      -@recipient.errors.each do |e|
+        li = e.full_message
+=form_with model: @recipient do |f|
+  .type
+    b> Type:
+    =@type
+    =f.hidden_field :type, value: @type
+  .name
+    b> Name:
+    =f.text_field :name
+
+  =f.submit

@@ -1,0 +1,25 @@
+p.center Edit Outgo for #{@asset.name} Asset
+
+-if @outgo.errors.any?
+  #error
+    ul
+      -@outgo.errors.each do |e|
+        li = e.full_message
+
+.center=form_with model: @outgo do |f|
+  .amount
+    b> Amount:
+    =money_picker @outgo
+  .date
+    b> Date:
+    =f.date_field :date
+  .recipient
+    b> Recipient:
+    = f.collection_select :recipient_id, Outgo.recipients.sort, :id, :name, { include_blank: true }
+  .memo
+    b> Memo:
+    =f.text_field :memo
+  .asset
+    b> Asset:
+    = f.collection_select :asset_id, Asset.all.sort, :id, :name, {selected: @asset.id}
+  =f.submit

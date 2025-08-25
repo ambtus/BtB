@@ -1,0 +1,13 @@
+=display @income.amount
+|<> on
+=@income.date
+|<> to
+=@income.asset.name
+|<> from
+=@income.recipient.try(&:name)
+|<>
+=@income.memo
+|<>
+=link_to 'Edit', edit_income_path(@income)
+|<>
+=link_to 'Delete', delete_income_path(@income)

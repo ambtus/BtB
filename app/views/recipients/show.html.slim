@@ -1,0 +1,10 @@
+.center=@title
+
+ul class=@recipient.method
+  =render "#{@recipient.method}/lis", @recipient.method => @recipient.targets
+
+
+hr
+=link_to 'Edit Recipient', edit_recipient_path(@recipient)
+|<> |
+=link_to 'Delete Recipient', delete_recipient_path(@recipient)

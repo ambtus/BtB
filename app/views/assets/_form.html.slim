@@ -1,0 +1,13 @@
+-if @asset.errors.any?
+  #error
+    ul
+      -@asset.errors.each do |e|
+        li = e.full_message
+=form_with model: @asset do |f|
+  .name
+    b> Name:
+    =f.text_field :name
+  .memo
+    b> Memo:
+    =f.text_field :memo
+  =f.submit

@@ -1,0 +1,6 @@
+p
+  Are you sure you want to delete this #{@charge.debt.name} charge? This action will reduce the #{display Debt.net} net.
+
+= form_with model: @charge do |f|
+  =f.button 'Destroy', formmethod: :delete, class: :big_button
+  =f.submit 'Keep', class: :big_button

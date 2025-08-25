@@ -1,0 +1,21 @@
+p.center New Charge for #{@debt.name}
+
+-if @charge.errors.any?
+  #error
+    ul
+      -@charge.errors.each do |e|
+        li = e.full_message
+.center=form_with model: [@debt, @charge] do |f|
+  .amount
+    b> Amount:
+    =money_picker @charge
+  .date
+    b> Date:
+    =f.date_field :date
+  .recipient
+    b> Recipient:
+    = f.collection_select :recipient_id, Charge.recipients, :id, :name, { include_blank: true }
+  .memo
+    b> Memo:
+    =f.text_field :memo
+  =f.submit

@@ -6,6 +6,8 @@ class ApplicationRecord < ActiveRecord::Base
   normalizes :name, with: ->(name) { name.squish }
   normalizes :memo, with: ->(memo) { memo.squish }
 
+  def <=>(other) = name.downcase <=> other.name.downcase
+
   def amount_hash
     return {} if amount.nil?
 

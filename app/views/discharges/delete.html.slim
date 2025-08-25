@@ -1,0 +1,6 @@
+p
+  Are you sure you want to delete this #{@discharge.debt.name} income? This action will increase the #{display Debt.net} net.
+
+= form_with model: @discharge do |f|
+  =f.button 'Destroy', formmethod: :delete, class: :big_button
+  =f.submit 'Keep', class: :big_button

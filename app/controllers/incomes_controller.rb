@@ -3,14 +3,15 @@
 class IncomesController < ApplicationController
   before_action :set_income, except: %i[index new create]
   before_action :set_asset
+
   def index = (@incomes = Income.all)
 
-  def new = (@income = Income.new(asset: @asset)
+  def new = (@income = Income.new(asset: @asset))
 
   def edit = (@title = "Edit #{@income.asset.name} Income")
 
   def create
-    @income = Income.new(income_params)
+    @income = @asset.incomes.build(income_params)
     if @income.save
       redirect_to @income, notice: 'Success!'
     else
@@ -47,13 +48,14 @@ class IncomesController < ApplicationController
     @asset =
       if params[:asset_id]
         Asset.find(params[:asset_id])
-      elsif @income
-        @income.asset
       else
-        Asset.new
+        @income.asset
       end
   end
 
   # You can use the same list for both create and update.
-  def income_params = params.expect(income: %i[date asset_id recipient_id memo]).merge(amount: amount)
+  def income_params
+    params.expect(income: %i[date recipient_id memo asset_id])
+          .merge(amount: amount)
+  end
 end

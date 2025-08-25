@@ -1,0 +1,22 @@
+ul.assets.center
+  -Asset.find_each do |a|
+    li
+      =a.name
+      |> :
+      span class=a.name.downcase
+        =display(a.net)
+
+=form_with url: post_transfer_path do |f|
+  .amount
+    b> Amount:
+    =money_picker @transfer
+  .date
+    b> Date:
+    =f.date_field :date
+  .sender
+    b> Sending Asset:
+    = f.select(:sender_id, Asset.all.collect { |a| [a.name, a.id] })
+  .sender
+    b> Receiving Asset:
+    = f.select(:receiver_id, Asset.all.collect { |a| [a.name, a.id] })
+  =f.submit
