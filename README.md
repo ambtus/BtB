@@ -12,6 +12,8 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+1. create a config/database.yml file
+2. rails db:setup
 
 * Database initialization
 

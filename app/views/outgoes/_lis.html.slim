@@ -3,7 +3,10 @@
     =display x.amount
     |<> on
     =x.date
-    -if x.other
+    -if @other
+      |<> from
+      =x.asset.name
+    -elsif x.other
       |<> to
       =x.other.name
     |<>
