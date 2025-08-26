@@ -23,14 +23,21 @@ class Asset < ApplicationRecord
     return false if sender == receiver
     return false if amount > sender.net
 
-    sender.outgoes.create!(amount: amount)
-    receiver.incomes.create!(amount: amount)
+    other1 = Other.find_or_create_by(type: Outgo, name: receiver.name)
+    other2 = Other.find_or_create_by(type: Income, name: sender.name)
+
+    sender.outgoes.create!(amount: amount, other: other1)
+    receiver.incomes.create!(amount: amount, other: other2)
   end
 
   def self.payoff(amount, sender, receiver)
     return false if amount > sender.net
 
-    sender.outgoes.create!(amount: amount)
-    receiver.discharges.create!(amount: amount)
+    other1 = Other.find_or_create_by(type: Outgo, name: receiver.name)
+    other2 = Other.find_or_create_by(type: Discharge, name: sender.name)
+
+    outgo = sender.outgoes.create!(amount: amount, other: other1)
+    discharge = receiver.discharges.create!(amount: amount, other: other2)
+
   end
 end

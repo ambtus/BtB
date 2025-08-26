@@ -13,8 +13,6 @@
     |<>
     =link_to 'Delete', delete_discharge_path(x)
     |<>
-    =link_to 'Debts', discharge_path(x)
-    |<>
     -if x.reconciled?
       =button_to 'Unreconcile', unreconcile_discharge_path(x)
     -else

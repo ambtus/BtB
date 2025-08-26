@@ -97,8 +97,16 @@ RSpec.describe Debt, type: :model do
         expect(Discharge.count).to be 1
       end
 
+      it 'with a visa other' do
+        expect(Discharge.first.other.name).to eq 'Visa'
+      end
+
       it 'creates a charge' do
         expect(Charge.count).to be 2
+      end
+
+      it 'with a iTunes other' do
+        expect(Charge.last.other.name).to eq 'iTunes'
       end
 
       it 'does not change the net' do
