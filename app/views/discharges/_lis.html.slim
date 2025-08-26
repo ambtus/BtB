@@ -3,10 +3,8 @@
     =display x.amount
     |<> on
     =x.date
-    |<> from
-    =x.debt.name
     -if x.recipient
-      |<> to
+      |<> from
       =x.recipient.name
     |<>
     =x.memo

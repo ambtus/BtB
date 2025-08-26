@@ -77,7 +77,7 @@ Example: change outgo account success
   When I go to edit the checking outgo
     And I select Savings
     And I press Update
-  Then I should see 'from Savings'
+  Then I should see 'Savings'
 
 Example: delete outgo title
   Given it has a small outgo

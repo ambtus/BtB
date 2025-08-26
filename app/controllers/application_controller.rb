@@ -5,6 +5,24 @@ class ApplicationController < ActionController::Base
 
   def home = (@title = 'Home')
 
+
+  def payoff
+    @title = 'New Payoff'
+    @outgo = Outgo.new
+  end
+
+  def post_payoff
+    ids = params.expect(:sender_id, :receiver_id)
+    if Asset.payoff(amount, Asset.find(ids.first), Debt.find(ids.second))
+      redirect_to home_path, notice: 'Payoff succeeded!'
+    else
+      @outgo = Outgo.new(amount: amount)
+      flash.now[:alert] = 'Payoff Failure!'
+      render 'payoff'
+    end
+  end
+
+
   before_action :set_title
   def set_title
     @title = "#{action_name.capitalize} #{controller_name.singularize.capitalize}"

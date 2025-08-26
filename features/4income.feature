@@ -76,7 +76,7 @@ Example: change income account success
   When I go to edit the checking income
     And I select Savings
     And I press Update
-  Then I should see 'to Savings'
+  Then I should see 'Savings'
 
 Example: delete income title
   Given it has a small income

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     post "#{thing}/:id/unreconcile", to: "#{thing}#unreconcile", as: "unreconcile_#{thing.singularize}"
   end
 
+  get 'payoff', to: 'application#payoff', as: :payoff
+  post 'payoff', to: 'application#post_payoff', as: :post_payoff
+
   get 'transfer', to: 'assets#transfer', as: :transfer
   post 'transfer', to: 'assets#post_transfer', as: :post_transfer
 

@@ -76,7 +76,7 @@ Example: change discharge debt success
   When I go to edit the Visa discharge
     And I select iTunes
     And I press Update
-  Then I should see 'from iTunes'
+  Then I should see 'iTunes'
 
 Example: delete discharge title
   Given it has a small discharge

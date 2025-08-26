@@ -1,0 +1,14 @@
+=form_with url: post_payoff_path do |f|
+  .amount
+    b> Amount:
+    =money_picker @outgo
+  .date
+    b> Date:
+    =f.date_field :date
+  .sender
+    b> Sending Asset:
+    = f.select(:sender_id, Asset.all.collect { |a| [a.name, a.id] })
+  .sender
+    b> Receiving Debt:
+    = f.select(:receiver_id, Debt.all.sort.collect { |a| [a.name, a.id] })
+  =f.submit

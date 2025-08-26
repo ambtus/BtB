@@ -14,7 +14,7 @@ p.center Edit Disharge for #{@debt.name}
     =f.date_field :date
   .recipient
     b> Recipient:
-    = f.collection_select :recipient_id, Charge.recipients, :id, :name, { include_blank: true }
+    = f.collection_select :recipient_id, Discharge.recipients, :id, :name, { include_blank: true }
   .memo
     b> Memo:
     =f.text_field :memo

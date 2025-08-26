@@ -12,7 +12,7 @@ hr
 
 ul.charges.right
   =render 'charges/lis', charges: @debt.unreconciled_charges
-.right=link_to 'New Charge', new_debt_discharge_path(@debt)
+.right=link_to 'New Charge', new_debt_charge_path(@debt)
 
 ul.discharges
   =render 'discharges/lis', discharges: @debt.unreconciled_discharges

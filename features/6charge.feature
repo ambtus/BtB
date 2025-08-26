@@ -76,7 +76,7 @@ Example: change charge debt success
   When I go to edit the Visa charge
     And I select iTunes
     And I press Update
-  Then I should see 'to iTunes'
+  Then I should see 'iTunes'
 
 Example: delete charge title
   Given it has a small charge

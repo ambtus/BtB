@@ -3,10 +3,9 @@
     =display x.amount
     |<> on
     =x.date
-    |<> to
-    =x.asset.name
-    |<> from
-    =x.recipient.try(&:name)
+    -if x.recipient
+      |<> from
+      =x.recipient.name    
     |<>
     =x.memo
     |<>

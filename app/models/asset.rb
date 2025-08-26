@@ -26,4 +26,12 @@ class Asset < ApplicationRecord
     sender.outgoes.create!(amount: amount)
     receiver.incomes.create!(amount: amount)
   end
+
+  def self.payoff(amount, sender, receiver)
+    return false if amount > sender.net
+
+    sender.outgoes.create!(amount: amount)
+    receiver.discharges.create!(amount: amount)
+  end
+
 end
