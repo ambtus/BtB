@@ -48,7 +48,7 @@ Example: create new failure
 Example: edit discharge title
   Given it has a small discharge
   When I go to edit the Visa discharge
-  Then the title should be 'IDNAB: Edit Visa Discharge'
+  Then the title should be 'BtB: Edit Visa Discharge'
 
 Example: edit discharge success
   Given it has a small discharge
@@ -81,7 +81,7 @@ Example: change discharge debt success
 Example: delete discharge title
   Given it has a small discharge
   When I go to delete the Visa discharge
-  Then the title should be 'IDNAB: Delete Visa Discharge'
+  Then the title should be 'BtB: Delete Visa Discharge'
 
 Example: delete success
   Given it has a small discharge

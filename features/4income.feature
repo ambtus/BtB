@@ -48,7 +48,7 @@ Example: create new failure
 Example: edit income title
   Given it has a small income
   When I go to edit the checking income
-  Then the title should be 'IDNAB: Edit Checking Income'
+  Then the title should be 'BtB: Edit Checking Income'
 
 Example: edit income success
   Given it has a small income
@@ -81,7 +81,7 @@ Example: change income account success
 Example: delete income title
   Given it has a small income
   When I go to delete the checking income
-  Then the title should be 'IDNAB: Delete Checking Income'
+  Then the title should be 'BtB: Delete Checking Income'
 
 Example: delete success
   Given it has a small income

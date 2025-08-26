@@ -4,7 +4,7 @@ Background:
   When I am on the home page
 
 Example: Home title
-  Then the title should be "IDNAB: Home"
+  Then the title should be "BtB: Home"
 
 Example: Home unless current
   Then the link to Home should be disabled

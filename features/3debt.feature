@@ -2,12 +2,12 @@ Feature: manipulating an debt
 
 Example: New debt title
   When I go to the new debt page
-  Then the title should be 'IDNAB: New Debt'
+  Then the title should be 'BtB: New Debt'
 
 Example: show debt title
   Given I have a Visa debt
   When I go to the Visa page
-  Then the title should be 'IDNAB: Visa Debt'
+  Then the title should be 'BtB: Visa Debt'
 
 Example: create new success without memo
   When I go to the new debt page
@@ -37,7 +37,7 @@ Example: create new failure
 Example: edit debt title
   Given I have a Visa debt
   When I go to the edit Visa debt page
-  Then the title should be 'IDNAB: Edit Visa Debt'
+  Then the title should be 'BtB: Edit Visa Debt'
 
 Example: edit Visa success
   Given I have a Visa debt
@@ -56,7 +56,7 @@ Example: edit Visa failure
 Example: delete debt title
   Given I have a Visa debt
   When I go to the delete Visa debt page
-  Then the title should be 'IDNAB: Delete Visa Debt'
+  Then the title should be 'BtB: Delete Visa Debt'
 
 Example: delete success
   Given I have a Visa debt
@@ -94,7 +94,7 @@ Example: debt memo on debt page
 
 Example: Payment title
   When I go to the payment page
-  Then the title should be 'IDNAB: New Payment'
+  Then the title should be 'BtB: New Payment'
 
 Example: Reconciled amount
   Given I have a Visa debt

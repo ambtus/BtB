@@ -2,12 +2,12 @@ Feature: manipulating an asset
 
 Example: New asset title
   When I go to the new asset page
-  Then the title should be 'IDNAB: New Asset'
+  Then the title should be 'BtB: New Asset'
 
 Example: show asset title
   Given I have a checking asset
   When I go to the checking page
-  Then the title should be 'IDNAB: Checking Asset'
+  Then the title should be 'BtB: Checking Asset'
 
 Example: create new success without memo
   When I go to the new asset page
@@ -37,7 +37,7 @@ Example: create new failure
 Example: edit asset title
   Given I have a checking asset
   When I go to the edit checking asset page
-  Then the title should be 'IDNAB: Edit Checking Asset'
+  Then the title should be 'BtB: Edit Checking Asset'
 
 Example: edit checking success
   Given I have a checking asset
@@ -56,7 +56,7 @@ Example: edit checking failure
 Example: delete asset title
   Given I have a checking asset
   When I go to the delete checking asset page
-  Then the title should be 'IDNAB: Delete Checking Asset'
+  Then the title should be 'BtB: Delete Checking Asset'
 
 Example: delete success
   Given I have a checking asset
@@ -94,7 +94,7 @@ Example: asset memo on asset page
 
 Example: Transfer title
   When I go to the transfer page
-  Then the title should be 'IDNAB: New Transfer'
+  Then the title should be 'BtB: New Transfer'
 
 Example: Reconciled amount
   Given I have a checking asset

@@ -49,7 +49,7 @@ Example: create new failure
 Example: edit outgo title
   Given it has a small outgo
   When I go to edit the checking outgo
-  Then the title should be 'IDNAB: Edit Checking Outgo'
+  Then the title should be 'BtB: Edit Checking Outgo'
 
 Example: edit outgo success
   Given it has a small outgo
@@ -82,7 +82,7 @@ Example: change outgo account success
 Example: delete outgo title
   Given it has a small outgo
   When I go to delete the checking outgo
-  Then the title should be 'IDNAB: Delete Checking Outgo'
+  Then the title should be 'BtB: Delete Checking Outgo'
 
 Example: delete success
   Given it has a small outgo

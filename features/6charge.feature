@@ -48,7 +48,7 @@ Example: create new failure
 Example: edit charge title
   Given it has a small charge
   When I go to edit the Visa charge
-  Then the title should be 'IDNAB: Edit Visa Charge'
+  Then the title should be 'BtB: Edit Visa Charge'
 
 Example: edit charge success
   Given it has a small charge
@@ -81,7 +81,7 @@ Example: change charge debt success
 Example: delete charge title
   Given it has a small charge
   When I go to delete the Visa charge
-  Then the title should be 'IDNAB: Delete Visa Charge'
+  Then the title should be 'BtB: Delete Visa Charge'
 
 Example: delete success
   Given it has a small charge

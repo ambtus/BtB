@@ -9,7 +9,7 @@ Example: show other title
   Given I have an income other
   When I am on the home page
     And I follow cash income
-  Then the title should be 'IDNAB: cash income Other'
+  Then the title should be 'BtB: cash income Other'
 
 Example: create new success
   When I am on the home page
@@ -30,7 +30,7 @@ Example: edit other title
   When I am on the home page
     And I follow cash income
     And I follow Edit
-  Then the title should be 'IDNAB: Edit cash income Other'
+  Then the title should be 'BtB: Edit cash income Other'
 
 Example: edit other success
   Given I have an income other
@@ -55,7 +55,7 @@ Example: delete title
   When I am on the home page
     And I follow cash income
     And I follow Delete
-  Then the title should be 'IDNAB: Delete cash income Other'
+  Then the title should be 'BtB: Delete cash income Other'
 
 Example: delete success
   Given I have an income other
