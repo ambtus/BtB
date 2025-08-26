@@ -1,13 +1,12 @@
 -incomes.sort_by(&:date).reverse_each do |x|
   li
     =display x.amount
-    |<> on
+    |<>
     =x.date
+    |<>
     -if @other
-      |<> to
       =x.asset.name
     -elsif x.other
-      |<> from
       =x.other.name
     |<>
     =x.memo
@@ -15,9 +14,9 @@
     =link_to 'Edit', edit_income_path(x)
     |<>
     =link_to 'Delete', delete_income_path(x)
-    |<>
-    -if x.reconciled?
-      =button_to 'Unreconcile', unreconcile_income_path(x)
-    -else
-      =button_to 'Reconcile', reconcile_income_path(x)
+    -unless @other
+      -if x.reconciled?
+        =button_to 'Unreconcile', unreconcile_income_path(x)
+      -else
+        =button_to 'Reconcile', reconcile_income_path(x)
 

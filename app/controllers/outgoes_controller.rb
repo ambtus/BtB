@@ -11,7 +11,7 @@ class OutgoesController < ApplicationController
   def create
     @outgo = @asset.outgoes.build(outgo_params)
     if @outgo.save
-      redirect_to asset_path(@asset), notice: 'Success!'
+      redirect_to @asset, notice: 'Success!'
     else
       flash.now[:alert] = 'Failure!'
       render 'new'
@@ -20,12 +20,12 @@ class OutgoesController < ApplicationController
 
   def reconcile
     @outgo.update!(reconciled: true)
-    redirect_to asset_path(@asset)
+    redirect_to @asset
   end
 
   def unreconcile
     @outgo.update!(reconciled: false)
-    redirect_to asset_path(@asset)
+    redirect_to @asset
   end
 
   def update
@@ -41,11 +41,11 @@ class OutgoesController < ApplicationController
 
   def destroy
     @outgo.destroy!
-    redirect_to asset_url(@outgo.asset), alert: "#{@outgo.asset.name} outgo was destroyed!"
+    redirect_to @asset, alert: "#{@outgo.asset.name} outgo was destroyed!"
   end
 
   def keep
-    redirect_to asset_url(@outgo.asset), notice: 'Great!'
+    redirect_to @asset, notice: 'Great!'
   end
 
   private

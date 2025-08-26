@@ -161,10 +161,10 @@ RSpec.describe Asset, type: :model do
   end
 
   describe 'payoff between asset and debt' do
-    before {
+    before do
       checking_asset.incomes.create!(amount: 10)
       visa_debt.charges.create!(amount: 5)
-    }
+    end
 
     describe 'success' do
       before { described_class.payoff(5, checking_asset, visa_debt) }

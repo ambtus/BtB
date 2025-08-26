@@ -11,7 +11,7 @@ class IncomesController < ApplicationController
   def create
     @income = @asset.incomes.build(income_params)
     if @income.save
-      redirect_to asset_path(@asset), notice: 'Success!'
+      redirect_to @asset, notice: 'Success!'
     else
       flash.now[:alert] = 'Failure!'
       render 'new'
@@ -20,12 +20,12 @@ class IncomesController < ApplicationController
 
   def reconcile
     @income.update!(reconciled: true)
-    redirect_to asset_path(@asset)
+    redirect_to @asset
   end
 
   def unreconcile
     @income.update!(reconciled: false)
-    redirect_to asset_path(@asset)
+    redirect_to @asset
   end
 
   def update
@@ -41,11 +41,11 @@ class IncomesController < ApplicationController
 
   def destroy
     @income.destroy!
-    redirect_to asset_url(@income.asset), alert: "#{@income.asset.name} income was destroyed!"
+    redirect_to @asset, alert: "#{@income.asset.name} income was destroyed!"
   end
 
   def keep
-    redirect_to asset_url(@income.asset), notice: 'Great!'
+    redirect_to @asset, notice: 'Great!'
   end
 
   private

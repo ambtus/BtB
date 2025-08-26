@@ -1,13 +1,12 @@
 -outgoes.sort_by(&:date).reverse_each do |x|
   li
     =display x.amount
-    |<> on
+    |<>
     =x.date
+    |<>
     -if @other
-      |<> from
       =x.asset.name
     -elsif x.other
-      |<> to
       =x.other.name
     |<>
     =x.memo
@@ -15,8 +14,8 @@
     =link_to 'Edit', edit_outgo_path(x)
     |<>
     =link_to 'Delete', delete_outgo_path(x)
-    |<>
-    -if x.reconciled?
-      =button_to 'Unreconcile', unreconcile_outgo_path(x)
-    -else
-      =button_to 'Reconcile', reconcile_outgo_path(x)
+    -unless @other
+      -if x.reconciled?
+        =button_to 'Unreconcile', unreconcile_outgo_path(x)
+      -else
+        =button_to 'Reconcile', reconcile_outgo_path(x)

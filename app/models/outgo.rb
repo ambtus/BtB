@@ -7,7 +7,7 @@ class Outgo < ApplicationRecord
   before_validation :funds_available?
   before_validation { self.date = Time.zone.today if date.blank? }
 
-  def self.others = Other.where(type: Outgo)
+  def self.others = Other.where(type: Outgo).sort_by { |o| o.name.downcase }
 
   private
 

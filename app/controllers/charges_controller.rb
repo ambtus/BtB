@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
   def create
     @charge = @debt.charges.build(charge_params)
     if @charge.save
-      redirect_to @charge, notice: 'Success!'
+      redirect_to @debt, notice: 'Success!'
     else
       flash.now[:alert] = 'Failure!'
       render 'new'
@@ -41,11 +41,11 @@ class ChargesController < ApplicationController
 
   def destroy
     @charge.destroy!
-    redirect_to debt_url(@charge.debt), alert: "#{@charge.debt.name} charge was destroyed!"
+    redirect_to @debt, alert: "#{@debt.name} charge was destroyed!"
   end
 
   def keep
-    redirect_to debt_url(@charge.debt), notice: 'Great!'
+    redirect_to @debt, notice: 'Great!'
   end
 
   private

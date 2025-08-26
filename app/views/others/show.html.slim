@@ -1,10 +1,11 @@
 .center=@title
+.center
+  =link_to 'Edit', edit_other_path(@other)
+  |<> |
+  =link_to 'Delete', delete_other_path(@other)
+hr
 
 ul class=@other.method
   =render "#{@other.method}/lis", @other.method => @other.targets
 
 
-hr
-=link_to 'Edit Other', edit_other_path(@other)
-|<> |
-=link_to 'Delete Other', delete_other_path(@other)

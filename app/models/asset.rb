@@ -36,8 +36,7 @@ class Asset < ApplicationRecord
     other1 = Other.find_or_create_by(type: Outgo, name: receiver.name)
     other2 = Other.find_or_create_by(type: Discharge, name: sender.name)
 
-    outgo = sender.outgoes.create!(amount: amount, other: other1)
-    discharge = receiver.discharges.create!(amount: amount, other: other2)
-
+    sender.outgoes.create!(amount: amount, other: other1)
+    receiver.discharges.create!(amount: amount, other: other2)
   end
 end

@@ -15,7 +15,7 @@ p.center Edit Outgo for #{@asset.name} Asset
     =f.date_field :date
   .other
     b> Other:
-    = f.collection_select :other_id, Outgo.others.sort, :id, :name, { include_blank: true }
+    = f.collection_select :other_id, Outgo.others, :id, :name, { include_blank: true }
   .memo
     b> Memo:
     =f.text_field :memo
