@@ -57,17 +57,17 @@ RSpec.describe Discharge, type: :model do
     end
   end
 
-  describe 'recipient' do
+  describe 'other' do
     it 'can be set' do
       expect(visa_debt.discharges.create!(amount: 5,
-                                       recipient: discharge_recipient).recipient.name).to eq 'credit discharge'
+                                           other: discharge_other).other.name).to eq 'credit discharge'
     end
 
     it 'can be unset' do
-      discharge = visa_debt.discharges.create!(amount: 5, recipient: discharge_recipient)
-      discharge_recipient.destroy!
+      discharge = visa_debt.discharges.create!(amount: 5, other: discharge_other)
+      discharge_other.destroy!
       discharge.reload
-      expect(discharge.recipient).to be_nil
+      expect(discharge.other).to be_nil
     end
   end
 end

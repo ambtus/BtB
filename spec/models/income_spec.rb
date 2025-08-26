@@ -37,17 +37,17 @@ RSpec.describe Income, type: :model do
     end
   end
 
-  describe 'recipient' do
+  describe 'other' do
     it 'can be set' do
       expect(checking_asset.incomes.create!(amount: 5,
-                                         recipient: income_recipient).recipient.name).to eq 'cash income'
+                                             other: income_other).other.name).to eq 'cash income'
     end
 
     it 'can be unset' do
-      income = checking_asset.incomes.create!(amount: 5, recipient: income_recipient)
-      income_recipient.destroy!
+      income = checking_asset.incomes.create!(amount: 5, other: income_other)
+      income_other.destroy!
       income.reload
-      expect(income.recipient).to be_nil
+      expect(income.other).to be_nil
     end
   end
 end

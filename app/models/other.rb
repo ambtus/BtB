@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Recipient < ApplicationRecord
+class Other < ApplicationRecord
   self.inheritance_column = nil
   has_many :incomes, dependent: :nullify
   has_many :outgoes, dependent: :nullify
@@ -11,7 +11,7 @@ class Recipient < ApplicationRecord
   validates :type, presence: true
 
   [Income, Outgo, Charge, Discharge].each do |model|
-    define_method(model.name) { model.send(:recipients) }
+    define_method(model.name) { model.send(:others) }
   end
 
   def method = type.downcase.pluralize.to_sym

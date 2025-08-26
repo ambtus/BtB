@@ -51,17 +51,17 @@ RSpec.describe Charge, type: :model do
     end
   end
 
-  describe 'recipient' do
+  describe 'other' do
     it 'can be set' do
       expect(visa_debt.charges.create!(amount: 5,
-                                    recipient: charge_recipient).recipient.name).to eq 'credit charge'
+                                        other: charge_other).other.name).to eq 'credit charge'
     end
 
     it 'can be unset' do
-      charge = visa_debt.charges.create!(amount: 5, recipient: charge_recipient)
-      charge_recipient.destroy!
+      charge = visa_debt.charges.create!(amount: 5, other: charge_other)
+      charge_other.destroy!
       charge.reload
-      expect(charge.recipient).to be_nil
+      expect(charge.other).to be_nil
     end
   end
 end

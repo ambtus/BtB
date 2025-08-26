@@ -20,21 +20,21 @@ Example: create new memo permitted
     And I give it a complex amount
   Then I should see "SocSec"
 
-Example: create new defaults to no recipient
-  Given I have an charge recipient
+Example: create new defaults to no other
+  Given I have an charge other
   When I go to the charge page
     And I give it a complex amount
   Then I should NOT see "credit charge"
 
-Example: create new success with recipient
-  Given I have an charge recipient
+Example: create new success with other
+  Given I have an charge other
   When I go to the charge page
     And I select credit charge
     And I give it a complex amount
   Then I should see a notice
 
-Example: create new with recipient permitted
-  Given I have an charge recipient
+Example: create new with other permitted
+  Given I have an charge other
   When I go to the charge page
     And I select credit charge
     And I give it a complex amount

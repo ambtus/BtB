@@ -6,10 +6,10 @@ def savings_asset = Asset.find_or_create_by(name: 'Savings')
 def visa_debt = Debt.find_or_create_by(name: 'Visa')
 def itunes_debt = Debt.find_or_create_by(name: 'iTunes')
 
-def income_recipient = Recipient.find_or_create_by(name: 'cash income', type: Income)
-def outgo_recipient = Recipient.find_or_create_by(name: 'cash outgo', type: Outgo)
-def charge_recipient = Recipient.find_or_create_by(name: 'credit charge', type: Charge)
-def discharge_recipient = Recipient.find_or_create_by(name: 'credit discharge', type: Discharge)
+def income_other = Other.find_or_create_by(name: 'cash income', type: Income)
+def outgo_other = Other.find_or_create_by(name: 'cash outgo', type: Outgo)
+def charge_other = Other.find_or_create_by(name: 'credit charge', type: Charge)
+def discharge_other = Other.find_or_create_by(name: 'credit discharge', type: Discharge)
 
 def sizes = %w[zero small medium large compound complex future]
 

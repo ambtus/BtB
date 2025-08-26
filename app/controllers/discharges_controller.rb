@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class DischargesController < ApplicationController
-  before_action :set_discharge, except: %i[index new create]
+  before_action :set_discharge, except: %i[new create]
   before_action :set_debt
-
-  def index = (@discharges = Discharge.all)
 
   def new = (@discharge = Discharge.new(debt: @debt))
 
@@ -65,7 +63,7 @@ class DischargesController < ApplicationController
 
   # You can use the same list for both create and update.
   def discharge_params
-    params.expect(discharge: %i[date debt_id recipient_id memo])
+    params.expect(discharge: %i[date debt_id other_id memo])
           .merge(amount: amount)
   end
 end

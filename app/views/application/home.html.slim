@@ -49,10 +49,10 @@ table
     -[Income, Outgo, Charge, Discharge].each do |type|
       td
         ul
-          -type.recipients.sort.each do |r|
-            li=link_to r.name, recipient_path(r)
+          -type.others.sort.each do |r|
+            li=link_to r.name, other_path(r)
   tr
     -[Income, Outgo, Charge, Discharge].each do |type|
-      td=link_to "New #{type} Recipient", new_recipient_path(type)
+      td=link_to "New #{type} Other", new_other_path(type)
 
 

@@ -2,12 +2,12 @@
 
 class Outgo < ApplicationRecord
   belongs_to :asset
-  belongs_to :recipient, optional: true
+  belongs_to :other, optional: true
 
   before_validation :funds_available?
   before_validation { self.date = Time.zone.today if date.blank? }
 
-  def self.recipients = Recipient.where(type: Outgo)
+  def self.others = Other.where(type: Outgo)
 
   private
 

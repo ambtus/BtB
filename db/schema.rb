@@ -26,10 +26,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_25_210148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "debt_id", null: false
-    t.bigint "recipient_id"
+    t.bigint "other_id"
     t.boolean "reconciled", default: false, null: false
     t.index ["debt_id"], name: "index_charges_on_debt_id"
-    t.index ["recipient_id"], name: "index_charges_on_recipient_id"
+    t.index ["other_id"], name: "index_charges_on_other_id"
   end
 
   create_table "debts", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -47,10 +47,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_25_210148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "debt_id", null: false
-    t.bigint "recipient_id"
+    t.bigint "other_id"
     t.boolean "reconciled", default: false, null: false
     t.index ["debt_id"], name: "index_discharges_on_debt_id"
-    t.index ["recipient_id"], name: "index_discharges_on_recipient_id"
+    t.index ["other_id"], name: "index_discharges_on_other_id"
   end
 
   create_table "incomes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -60,10 +60,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_25_210148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "asset_id", null: false
-    t.bigint "recipient_id"
+    t.bigint "other_id"
     t.boolean "reconciled", default: false, null: false
     t.index ["asset_id"], name: "index_incomes_on_asset_id"
-    t.index ["recipient_id"], name: "index_incomes_on_recipient_id"
+    t.index ["other_id"], name: "index_incomes_on_other_id"
   end
 
   create_table "outgoes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -73,26 +73,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_25_210148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "asset_id", null: false
-    t.bigint "recipient_id"
+    t.bigint "other_id"
     t.boolean "reconciled", default: false, null: false
     t.index ["asset_id"], name: "index_outgoes_on_asset_id"
-    t.index ["recipient_id"], name: "index_outgoes_on_recipient_id"
+    t.index ["other_id"], name: "index_outgoes_on_other_id"
   end
 
-  create_table "recipients", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
+  create_table "others", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
     t.string "name", limit: 63, null: false
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_recipients_on_name", unique: true
+    t.index ["name"], name: "index_others_on_name", unique: true
   end
 
   add_foreign_key "charges", "debts"
-  add_foreign_key "charges", "recipients"
+  add_foreign_key "charges", "others"
   add_foreign_key "discharges", "debts"
-  add_foreign_key "discharges", "recipients"
+  add_foreign_key "discharges", "others"
   add_foreign_key "incomes", "assets"
-  add_foreign_key "incomes", "recipients"
+  add_foreign_key "incomes", "others"
   add_foreign_key "outgoes", "assets"
-  add_foreign_key "outgoes", "recipients"
+  add_foreign_key "outgoes", "others"
 end

@@ -12,9 +12,9 @@ p.center New Discharge for #{@debt.name}
   .date
     b> Date:
     =f.date_field :date
-  .recipient
-    b> Recipient:
-    = f.collection_select :recipient_id, Discharge.recipients, :id, :name, { include_blank: true }
+  .other
+    b> Other:
+    = f.collection_select :other_id, Discharge.others, :id, :name, { include_blank: true }
   .memo
     b> Memo:
     =f.text_field :memo

@@ -1,5 +1,0 @@
-p Are you sure you want to delete this #{@recipient.type} recipient? This action will nullify #{@recipient.targets.count} #{@recipient.type.downcase.pluralize}.
-
-= form_with model: @recipient do |f|
-  =f.button 'Destroy', formmethod: :delete, class: :big_button
-  =f.submit 'Keep', class: :big_button

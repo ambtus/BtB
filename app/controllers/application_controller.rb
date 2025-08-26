@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def home = (@title = 'Home')
 
-
   def payoff
     @title = 'New Payoff'
     @outgo = Outgo.new
@@ -21,7 +20,6 @@ class ApplicationController < ActionController::Base
       render 'payoff'
     end
   end
-
 
   before_action :set_title
   def set_title

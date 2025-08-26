@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class IncomesController < ApplicationController
-  before_action :set_income, except: %i[index new create]
+  before_action :set_income, except: %i[new create]
   before_action :set_asset
-
-  def index = (@incomes = Income.all)
 
   def new = (@income = Income.new(asset: @asset))
 
@@ -65,7 +63,7 @@ class IncomesController < ApplicationController
 
   # You can use the same list for both create and update.
   def income_params
-    params.expect(income: %i[date recipient_id memo asset_id])
+    params.expect(income: %i[date other_id memo asset_id])
           .merge(amount: amount)
   end
 end

@@ -1,9 +1,9 @@
--if @recipient.errors.any?
+-if @other.errors.any?
   #error
     ul
-      -@recipient.errors.each do |e|
+      -@other.errors.each do |e|
         li = e.full_message
-=form_with model: @recipient do |f|
+=form_with model: @other do |f|
   .type
     b> Type:
     =@type

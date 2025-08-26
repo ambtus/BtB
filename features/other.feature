@@ -1,48 +1,48 @@
-Feature: manipulating a recipient
+Feature: manipulating a other
 
-Example: recipient name on home page
-  Given I have an income recipient
+Example: other name on home page
+  Given I have an income other
   When I am on the home page
   Then I should see "cash income"
 
-Example: show recipient title
-  Given I have an income recipient
+Example: show other title
+  Given I have an income other
   When I am on the home page
     And I follow cash income
-  Then the title should be 'IDNAB: cash income Recipient'
+  Then the title should be 'IDNAB: cash income Other'
 
 Example: create new success
   When I am on the home page
-    And I follow New Income Recipient
+    And I follow New Income Other
   And I give it the name xyzzy
   Then I should see a notice
 
 Example: create new failure
-  Given I have an income recipient
+  Given I have an income other
   When I am on the home page
-    And I follow New Income Recipient
+    And I follow New Income Other
   And I name it cash income
   Then I should see an alert
     And I should see an error
 
-Example: edit recipient title
-  Given I have an income recipient
+Example: edit other title
+  Given I have an income other
   When I am on the home page
     And I follow cash income
     And I follow Edit
-  Then the title should be 'IDNAB: Edit cash income Recipient'
+  Then the title should be 'IDNAB: Edit cash income Other'
 
-Example: edit recipient success
-  Given I have an income recipient
+Example: edit other success
+  Given I have an income other
   When I am on the home page
     And I follow cash income
     And I follow Edit
   And I name it xyzzy
   Then I should see a notice
 
-Example: edit recipient failure
-  Given I have an income recipient
-    And I have a outgo recipient
+Example: edit other failure
+  Given I have an income other
+    And I have a outgo other
   When I am on the home page
     And I follow cash income
     And I follow Edit
@@ -51,14 +51,14 @@ Example: edit recipient failure
     And I should see an error
 
 Example: delete title
-  Given I have an income recipient
+  Given I have an income other
   When I am on the home page
     And I follow cash income
     And I follow Delete
-  Then the title should be 'IDNAB: Delete cash income Recipient'
+  Then the title should be 'IDNAB: Delete cash income Other'
 
 Example: delete success
-  Given I have an income recipient
+  Given I have an income other
   When I am on the home page
     And I follow cash income
     And I follow Delete
@@ -66,7 +66,7 @@ Example: delete success
   Then I should see an alert
 
 Example: delete abort
-  Given I have an income recipient
+  Given I have an income other
   When I am on the home page
     And I follow cash income
     And I follow Delete

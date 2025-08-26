@@ -1,0 +1,5 @@
+p Are you sure you want to delete this #{@other.type} other? This action will nullify #{@other.targets.count} #{@other.type.downcase.pluralize}.
+
+= form_with model: @other do |f|
+  =f.button 'Destroy', formmethod: :delete, class: :big_button
+  =f.submit 'Keep', class: :big_button

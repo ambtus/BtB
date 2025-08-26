@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'application#home', as: :home
 
-  %w[assets debts incomes outgoes charges discharges recipients].each do |thing|
+  %w[assets debts incomes outgoes charges discharges others].each do |thing|
     get "#{thing}/:id/delete", to: "#{thing}#delete", as: "delete_#{thing.singularize}"
   end
 
@@ -33,5 +33,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :recipients
+  resources :others
 end

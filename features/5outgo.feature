@@ -21,21 +21,21 @@ Example: create new memo permitted
     And I give it a complex amount
   Then I should see "IRS"
 
-Example: create new defaults to no recipient
-  Given I have a outgo recipient
+Example: create new defaults to no other
+  Given I have a outgo other
   When I go to the outgo page
     And I give it a complex amount
   Then I should NOT see "cash outgo"
 
-Example: create new success with recipient
-  Given I have a outgo recipient
+Example: create new success with other
+  Given I have a outgo other
   When I go to the outgo page
     And I select cash outgo
     And I give it a complex amount
   Then I should see a notice
 
-Example: create new with recipient permitted
-  Given I have a outgo recipient
+Example: create new with other permitted
+  Given I have a outgo other
   When I go to the outgo page
     And I select cash outgo
     And I give it a complex amount

@@ -33,5 +33,4 @@ class Asset < ApplicationRecord
     sender.outgoes.create!(amount: amount)
     receiver.discharges.create!(amount: amount)
   end
-
 end

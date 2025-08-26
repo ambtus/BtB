@@ -3,8 +3,9 @@
 =@charge.date
 |<> to
 =@charge.debt.name
-|<> from
-=@charge.recipient.try(&:name)
+-if @charge.other
+  |<> from
+  =@charge.other.name
 |<>
 =@charge.memo
 |<>

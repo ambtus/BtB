@@ -20,21 +20,21 @@ Example: create new memo permitted
     And I give it a complex amount
   Then I should see "SocSec"
 
-Example: create new defaults to no recipient
-  Given I have an income recipient
+Example: create new defaults to no other
+  Given I have an income other
   When I go to the income page
     And I give it a complex amount
   Then I should NOT see "cash income"
 
-Example: create new success with recipient
-  Given I have an income recipient
+Example: create new success with other
+  Given I have an income other
   When I go to the income page
     And I select cash income
     And I give it a complex amount
   Then I should see a notice
 
-Example: create new with recipient permitted
-  Given I have an income recipient
+Example: create new with other permitted
+  Given I have an income other
   When I go to the income page
     And I select cash income
     And I give it a complex amount

@@ -20,21 +20,21 @@ Example: create new memo permitted
     And I give it a complex amount
   Then I should see "IRS"
 
-Example: create new defaults to no recipient
-  Given I have a discharge recipient
+Example: create new defaults to no other
+  Given I have a discharge other
   When I go to the discharge page
     And I give it a complex amount
   Then I should NOT see "credit discharge"
 
-Example: create new success with recipient
-  Given I have a discharge recipient
+Example: create new success with other
+  Given I have a discharge other
   When I go to the discharge page
     And I select credit discharge
     And I give it a complex amount
   Then I should see a notice
 
-Example: create new with recipient permitted
-  Given I have a discharge recipient
+Example: create new with other permitted
+  Given I have a discharge other
   When I go to the discharge page
     And I select credit discharge
     And I give it a complex amount

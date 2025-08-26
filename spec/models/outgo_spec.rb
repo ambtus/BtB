@@ -57,16 +57,16 @@ RSpec.describe Outgo, type: :model do
     end
   end
 
-  describe 'recipient' do
+  describe 'other' do
     it 'can be set' do
-      expect(checking_asset.outgoes.create!(amount: 5, recipient: outgo_recipient).recipient.name).to eq 'cash outgo'
+      expect(checking_asset.outgoes.create!(amount: 5, other: outgo_other).other.name).to eq 'cash outgo'
     end
 
     it 'can be unset' do
-      outgo = checking_asset.outgoes.create!(amount: 5, recipient: outgo_recipient)
-      outgo_recipient.destroy!
+      outgo = checking_asset.outgoes.create!(amount: 5, other: outgo_other)
+      outgo_other.destroy!
       outgo.reload
-      expect(outgo.recipient).to be_nil
+      expect(outgo.other).to be_nil
     end
   end
 end

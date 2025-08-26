@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class OutgoesController < ApplicationController
-  before_action :set_outgo, except: %i[index new create]
+  before_action :set_outgo, except: %i[new create]
   before_action :set_asset
-
-  def index = (@outgoes = Outgo.all)
 
   def new = (@outgo = Outgo.new(asset: @asset))
 
@@ -65,7 +63,7 @@ class OutgoesController < ApplicationController
 
   # You can use the same list for both create and update.
   def outgo_params
-    params.expect(outgo: %i[date asset_id recipient_id memo])
+    params.expect(outgo: %i[date asset_id other_id memo])
           .merge(amount: amount)
   end
 end

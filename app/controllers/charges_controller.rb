@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class ChargesController < ApplicationController
-  before_action :set_charge, except: %i[index new create]
+  before_action :set_charge, except: %i[new create]
   before_action :set_debt
-
-  def index = (@charges = Charge.all)
 
   def new = (@charge = Charge.new(debt: @debt))
 
@@ -65,7 +63,7 @@ class ChargesController < ApplicationController
 
   # You can use the same list for both create and update.
   def charge_params
-    params.expect(charge: %i[date debt_id recipient_id memo])
+    params.expect(charge: %i[date debt_id other_id memo])
           .merge(amount: amount)
   end
 end
