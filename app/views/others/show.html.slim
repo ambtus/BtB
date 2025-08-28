@@ -4,7 +4,13 @@
   |<> |
   =link_to 'Delete', delete_other_path(@other)
 hr
-
+.center
+  b> This month:
+  =display(@other.this_month)
+  br
+  b> Total:
+  =display(@other.total)
+hr
 ul class=@other.method
   =render "#{@other.method}/lis", @other.method => @other.targets
 

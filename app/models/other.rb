@@ -16,4 +16,7 @@ class Other < ApplicationRecord
 
   def method = type.downcase.pluralize.to_sym
   def targets = send(method)
+
+  def this_month = targets.where('EXTRACT(MONTH FROM date) = ?', Time.zone.today.month).sum(&:amount)
+  def total = targets.sum(&:amount)
 end
