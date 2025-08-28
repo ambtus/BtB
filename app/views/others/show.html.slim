@@ -5,8 +5,8 @@
   =link_to 'Delete', delete_other_path(@other)
 hr
 .center
-  b> This month:
-  =display(@other.this_month)
+  b> Last 30 days:
+  =display(@other.last30)
   br
   b> Total:
   =display(@other.total)

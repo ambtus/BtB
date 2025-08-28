@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
   def create
     @charge = @debt.charges.build(charge_params)
     if @charge.save
-      redirect_to @debt, notice: 'Success!'
+      redirect_to (@charge.other || @debt), notice: 'Success!'
     else
       flash.now[:alert] = 'Failure!'
       render 'new'
