@@ -91,13 +91,13 @@ RSpec.describe Debt, type: :model do
     before { itunes_debt.charges.create!(amount: 10) }
 
     describe 'success' do
-      before { described_class.payment(5, itunes_debt, visa_debt) }
+      before { described_class.payment(10, visa_debt, itunes_debt) }
 
       it 'creates a discharge' do
         expect(Discharge.count).to be 1
       end
 
-      it 'with a visa other' do
+      it 'with a Visa other' do
         expect(Discharge.first.other.name).to eq 'Visa'
       end
 
@@ -105,7 +105,7 @@ RSpec.describe Debt, type: :model do
         expect(Charge.count).to be 2
       end
 
-      it 'with a iTunes other' do
+      it 'with an iTunes other' do
         expect(Charge.last.other.name).to eq 'iTunes'
       end
 
@@ -113,12 +113,12 @@ RSpec.describe Debt, type: :model do
         expect(described_class.net).to be 10
       end
 
-      it 'reduces the sender' do
-        expect(itunes_debt.net).to be 5
+      it 'increases the sender' do
+        expect(visa_debt.net).to be 10
       end
 
-      it 'increases the receiver' do
-        expect(visa_debt.net).to be 5
+      it 'decreases the receiver' do
+        expect(itunes_debt.net).to be 0
       end
     end
 
