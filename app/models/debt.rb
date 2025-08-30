@@ -21,9 +21,10 @@ class Debt < ApplicationRecord
 
   def self.payment(amount, sender, receiver)
     return false if sender == receiver
+    return false unless amount.positive?
 
-    other1 = Other.find_or_create_by(type: Charge, name: receiver.name)
-    other2 = Other.find_or_create_by(type: Discharge, name: sender.name)
+    other1 = Other.find_or_create_by!(type: Charge, name: receiver.name)
+    other2 = Other.find_or_create_by!(type: Discharge, name: sender.name)
 
     sender.charges.create!(amount: amount, other: other1)
     receiver.discharges.create!(amount: amount, other: other2)

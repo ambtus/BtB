@@ -47,3 +47,8 @@ Example: payments between same debt failure
   When I go to the payment page
     And I give it a small amount
   Then I should see an alert
+
+Example: payments zero amount failure
+  When I go to the payment page
+    And I pay a zero amount
+  Then I should see an alert
