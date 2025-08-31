@@ -7,8 +7,8 @@ class Other < ApplicationRecord
   has_many :charges, dependent: :nullify
   has_many :discharges, dependent: :nullify
 
-  validates :name, presence: true, uniqueness: true
   validates :type, presence: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :type }
 
   [Income, Outgo, Charge, Discharge].each do |model|
     define_method(model.name) { model.send(:others) }

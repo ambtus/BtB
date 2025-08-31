@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_25_210148) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_31_142147) do
   create_table "assets", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", limit: 63, null: false
     t.string "memo", limit: 63
@@ -66,6 +66,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_25_210148) do
     t.index ["other_id"], name: "index_incomes_on_other_id"
   end
 
+  create_table "others", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
+    t.string "name", limit: 63, null: false
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type", "name"], name: "index_others_on_type_and_name", unique: true
+  end
+
   create_table "outgoes", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.integer "amount", null: false, unsigned: true
     t.date "date", null: false
@@ -77,14 +85,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_25_210148) do
     t.boolean "reconciled", default: false, null: false
     t.index ["asset_id"], name: "index_outgoes_on_asset_id"
     t.index ["other_id"], name: "index_outgoes_on_other_id"
-  end
-
-  create_table "others", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
-    t.string "name", limit: 63, null: false
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_others_on_name", unique: true
   end
 
   add_foreign_key "charges", "debts"

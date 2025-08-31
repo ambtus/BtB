@@ -42,11 +42,10 @@ Example: edit other success
 
 Example: edit other failure
   Given I have an income other
-    And I have a outgo other
   When I am on the home page
     And I follow cash income
     And I follow Edit
-  And I name it cash outgo
+  And I name it  
   Then I should see an alert
     And I should see an error
 
