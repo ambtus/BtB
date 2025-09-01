@@ -81,8 +81,6 @@ When('I give it a {word} amount') do |size|
 end
 
 When('I transfer a {word} amount') do |size|
-  visit '/'
-  click_link 'Transfer'
   hash_hash[size.to_sym].each do |key, value|
     fill_in "amount_#{key}", with: value
   end
@@ -92,8 +90,6 @@ When('I transfer a {word} amount') do |size|
 end
 
 When('I pay a {word} amount') do |size|
-  visit '/'
-  click_link 'Payment'
   hash_hash[size.to_sym].each do |key, value|
     fill_in "amount_#{key}", with: value
   end
@@ -103,12 +99,14 @@ When('I pay a {word} amount') do |size|
 end
 
 When('I payoff a {word} amount') do |size|
-  visit '/'
-  click_link 'Payoff'
   hash_hash[size.to_sym].each do |key, value|
     fill_in "amount_#{key}", with: value
   end
   select('Checking', from: :sender_id)
   select('Visa', from: :receiver_id)
   click_button
+end
+
+When('I enter {word}') do |word|
+  fill_in 'date', with: Date.send(word).strftime('%F')
 end

@@ -19,24 +19,24 @@ class Asset < ApplicationRecord
 
   def unreconciled = unreconciled_incomes.sum(&:amount) - unreconciled_outgoes.sum(&:amount)
 
-  def self.transfer(amount, sender, receiver)
+  def self.transfer(amount, sender, receiver, date = Time.zone.today)
     return false if sender == receiver
     return false if amount > sender.net
 
     other1 = Other.find_or_create_by!(type: Outgo, name: receiver.name)
     other2 = Other.find_or_create_by!(type: Income, name: sender.name)
 
-    sender.outgoes.create!(amount: amount, other: other1)
-    receiver.incomes.create!(amount: amount, other: other2)
+    sender.outgoes.create!(amount: amount, other: other1, date: date)
+    receiver.incomes.create!(amount: amount, other: other2, date: date)
   end
 
-  def self.payoff(amount, sender, receiver)
+  def self.payoff(amount, sender, receiver, date = Time.zone.today)
     return false if amount > sender.net
 
     other1 = Other.find_or_create_by!(type: Outgo, name: receiver.name)
     other2 = Other.find_or_create_by!(type: Discharge, name: sender.name)
 
-    sender.outgoes.create!(amount: amount, other: other1)
-    receiver.discharges.create!(amount: amount, other: other2)
+    sender.outgoes.create!(amount: amount, other: other1, date: date)
+    receiver.discharges.create!(amount: amount, other: other2, date: date)
   end
 end

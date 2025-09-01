@@ -52,3 +52,10 @@ Example: transfer between same asset failure
   When I go to the transfer page
     And I give it a small amount
   Then I should see an alert
+
+Example: transfer between assets tomorrow
+  When I go to the transfer page
+    And I enter tomorrow
+    And I transfer a large amount
+    And I go to the checking page
+  Then the date should be tomorrow

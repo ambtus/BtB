@@ -52,3 +52,10 @@ Example: payments zero amount failure
   When I go to the payment page
     And I pay a zero amount
   Then I should see an alert
+
+Example: payments between debts yesterday
+  When I go to the payment page
+    And I enter yesterday
+    And I pay a large amount
+    And I go to the visa page
+  Then the date should be yesterday

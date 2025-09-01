@@ -45,6 +45,30 @@ RSpec.describe Asset, type: :model do
       end
     end
 
+    describe 'tomorrow' do
+      before { described_class.payoff(5, checking_asset, visa_debt, Date.tomorrow) }
+
+      it 'creates an outgo for tomorrow' do
+        expect(Outgo.first.date).to eq Date.tomorrow
+      end
+
+      it 'creates a discharge for tomorrow' do
+        expect(Discharge.first.date).to eq Date.tomorrow
+      end
+    end
+
+    describe 'yesterday' do
+      before { described_class.payoff(5, checking_asset, visa_debt, Date.yesterday) }
+
+      it 'creates an outgo for tomorrow' do
+        expect(Outgo.first.date).to eq Date.yesterday
+      end
+
+      it 'creates a discharge for tomorrow' do
+        expect(Discharge.first.date).to eq Date.yesterday
+      end
+    end
+
     describe 'failure: insufficient funds' do
       before { described_class.payoff(15, checking_asset, visa_debt) }
 

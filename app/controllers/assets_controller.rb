@@ -25,8 +25,7 @@ class AssetsController < ApplicationController
   end
 
   def post_transfer
-    asset_ids = params.expect(:sender_id, :receiver_id)
-    if Asset.transfer(amount, Asset.find(asset_ids.first), Asset.find(asset_ids.second))
+    if make_transfer
       redirect_to home_path, notice: 'Transfer succeeded!'
     else
       @transfer = Outgo.new(amount: amount)
@@ -64,4 +63,11 @@ class AssetsController < ApplicationController
 
   # You can use the same list for both create and update.
   def asset_params = params.expect(asset: %i[name memo])
+
+  def make_transfer
+    Asset.transfer(amount,
+                   Asset.find(params[:sender_id]),
+                   Asset.find(params[:receiver_id]),
+                   params[:date])
+  end
 end

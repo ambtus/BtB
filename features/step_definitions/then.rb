@@ -38,3 +38,7 @@ end
 Then('I should NOT see {string}') do |string|
   expect(page).to have_no_text(string)
 end
+
+Then('the date should be {word}') do |word|
+  expect(page).to have_text(Date.send(word))
+end

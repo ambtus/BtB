@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def post_payoff
-    ids = params.expect(:sender_id, :receiver_id)
-    if Asset.payoff(amount, Asset.find(ids.first), Debt.find(ids.second))
+    if make_payoff
       redirect_to home_path, notice: 'Payoff succeeded!'
     else
       @outgo = Outgo.new(amount: amount)
@@ -38,5 +37,12 @@ class ApplicationController < ActionController::Base
 
   def amount_params
     params.expect(amount: %i[thousands dollars cents])
+  end
+
+  def make_payoff
+    Asset.payoff(amount,
+                 Asset.find(params[:sender_id]),
+                 Debt.find(params[:receiver_id]),
+                 params[:date])
   end
 end

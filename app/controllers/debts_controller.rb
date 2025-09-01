@@ -25,8 +25,7 @@ class DebtsController < ApplicationController
   end
 
   def post_payment
-    debt_ids = params.expect(:sender_id, :receiver_id)
-    if Debt.payment(amount, Debt.find(debt_ids.first), Debt.find(debt_ids.second))
+    if make_payment
       redirect_to home_path, notice: 'Payment succeeded!'
     else
       @payment = Discharge.new(amount: amount)
@@ -64,4 +63,11 @@ class DebtsController < ApplicationController
 
   # You can use the same list for both create and update.
   def debt_params = params.expect(debt: %i[name memo])
+
+  def make_payment
+    Debt.payment(amount,
+                 Debt.find(params[:sender_id]),
+                 Debt.find(params[:receiver_id]),
+                 params[:date])
+  end
 end

@@ -15,3 +15,10 @@ Example: payoff failure
   When I go to the payoff page
     And I payoff a compound amount
   Then I should see an alert
+
+Example: payoff yesterday
+  When I go to the payoff page
+    And I enter yesterday
+    And I payoff a large amount
+    And I go to the checking page
+  Then the date should be yesterday

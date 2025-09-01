@@ -122,6 +122,30 @@ RSpec.describe Debt, type: :model do
       end
     end
 
+    describe 'tomorrow' do
+      before { described_class.payment(10, visa_debt, itunes_debt, Date.tomorrow) }
+
+      it 'creates an discharge for tomorrow' do
+        expect(Discharge.first.date).to eq Date.tomorrow
+      end
+
+      it 'creates a charge for tomorrow' do
+        expect(Charge.last.date).to eq Date.tomorrow
+      end
+    end
+
+    describe 'yesterday' do
+      before { described_class.payment(10, visa_debt, itunes_debt, Date.yesterday) }
+
+      it 'creates an discharge for yesterday' do
+        expect(Discharge.first.date).to eq Date.yesterday
+      end
+
+      it 'creates a charge for yesterday' do
+        expect(Charge.last.date).to eq Date.yesterday
+      end
+    end
+
     describe 'failure: same debt' do
       before { described_class.payment(5, visa_debt, visa_debt) }
 

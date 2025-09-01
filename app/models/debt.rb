@@ -19,14 +19,14 @@ class Debt < ApplicationRecord
 
   def unreconciled = unreconciled_charges.sum(&:amount) - unreconciled_discharges.sum(&:amount)
 
-  def self.payment(amount, sender, receiver)
+  def self.payment(amount, sender, receiver, date = Time.zone.today)
     return false if sender == receiver
     return false unless amount.positive?
 
     other1 = Other.find_or_create_by!(type: Charge, name: receiver.name)
     other2 = Other.find_or_create_by!(type: Discharge, name: sender.name)
 
-    sender.charges.create!(amount: amount, other: other1)
-    receiver.discharges.create!(amount: amount, other: other2)
+    sender.charges.create!(amount: amount, other: other1, date: date)
+    receiver.discharges.create!(amount: amount, other: other2, date: date)
   end
 end

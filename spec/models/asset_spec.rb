@@ -123,6 +123,30 @@ RSpec.describe Asset, type: :model do
       end
     end
 
+    describe 'tomorrow' do
+      before { described_class.transfer(5, savings_asset, checking_asset, Date.tomorrow) }
+
+      it 'creates an outgo for tomorrow' do
+        expect(Outgo.first.date).to eq Date.tomorrow
+      end
+
+      it 'creates an income for tomorrow' do
+        expect(Income.last.date).to eq Date.tomorrow
+      end
+    end
+
+    describe 'yesterday' do
+      before { described_class.transfer(5, savings_asset, checking_asset, Date.yesterday) }
+
+      it 'creates an outgo for yesterday' do
+        expect(Outgo.first.date).to eq Date.yesterday
+      end
+
+      it 'creates an income for yesterday' do
+        expect(Income.last.date).to eq Date.yesterday
+      end
+    end
+
     describe 'failure: insufficient funds' do
       before { described_class.transfer(15, savings_asset, checking_asset) }
 
